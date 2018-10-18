@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import updateIn from 'simple-update-in';
 
 import './WebChat.css';
 
