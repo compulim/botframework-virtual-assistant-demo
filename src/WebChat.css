@@ -1,0 +1,9 @@
+.web-chat {
+  display: flex;
+  flex: 1;
+  margin: 20px;
+}
+
+.web-chat > * {
+  flex: 1;
+}
