@@ -8,6 +8,7 @@ export default props =>
     <div className="backdrop">
       <div className="translucent" />
       <img
+        alt=""
         className="placeholder"
         src={ Artboard }
       />
