@@ -5,8 +5,7 @@ RUN apk update && \
 ADD . /bot
 WORKDIR /bot
 RUN npm install npm@latest -g && \
-    npm install && \
-    npm run build
+    npm install
 ENV PORT=80
 EXPOSE 80
 ENTRYPOINT node .
