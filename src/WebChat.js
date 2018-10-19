@@ -38,15 +38,11 @@ class WebChat extends Component {
       }
     };
 
-    const f = createCognitiveServicesWebSpeechPonyfillFactory({ fetchToken: fetchBingSpeechToken });
-
     this.state = {
       directLine: null,
       store: createStore(
         {},
         () => next => action => {
-          console.log(action.type);
-
           if (action.type === 'DIRECT_LINE/UPSERT_ACTIVITY') {
             // For demonstration purpose only: every time an activity come from DirectLineJS, we will change the driver side temperature to some random values
             this.props.adjustTemperature(~~(Math.random() * 10) + 65);
@@ -56,37 +52,26 @@ class WebChat extends Component {
         }
       ),
       styleSet,
-      webSpeechPonyfillFactory: function () {
-        console.log('creating ponyfill factory');
-        console.log(arguments);
-
-        const result = f.apply(null, arguments);
-
-        console.log(result);
-
-        return result;
-      }
-      // webSpeechPonyfillFactory: createCognitiveServicesWebSpeechPonyfillFactory({ fetchToken: this.fetchBingSpeechToken })
+      webSpeechPonyfillFactory: createCognitiveServicesWebSpeechPonyfillFactory({ fetchToken: fetchBingSpeechToken })
     };
-
-    console.log(this.state);
   }
 
   async componentDidMount() {
     const res = await fetch('https://hawo-webchat-virtual-assistant-demo.azurewebsites.net/directline/token', { method: 'POST' });
-    const { token } = await res.json();
+    const { token, userID } = await res.json();
 
     this.setState(() => ({
       directLine: createDirectLine({
-        token
-      })
+        token,
+      }),
+      userID
     }));
   }
 
   render() {
     const {
       props: { locale },
-      state: { directLine, store, styleSet, webSpeechPonyfillFactory }
+      state: { directLine, store, styleSet, userID, webSpeechPonyfillFactory }
     } = this;
 
     return (
@@ -99,6 +84,7 @@ class WebChat extends Component {
                 locale={ locale }
                 storeKey="webchat"
                 styleSet={ styleSet }
+                userID={ userID }
                 webSpeechPonyfillFactory={ webSpeechPonyfillFactory }
               />
             </WebChatProvider>
