@@ -19,15 +19,17 @@ server.get('/health.txt', async (req, res) => {
 });
 
 async function createUserID() {
-  return new Promise((resolve, reject) => {
-    randomBytes(16, (err, buffer) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(`dl_${ buffer.toString('hex') }`);
-      }
-    })
-  });
+  return 'dl_elaine';
+
+  // return new Promise((resolve, reject) => {
+  //   randomBytes(16, (err, buffer) => {
+  //     if (err) {
+  //       reject(err);
+  //     } else {
+  //       resolve(`dl_${ buffer.toString('hex') }`);
+  //     }
+  //   })
+  // });
 }
 
 server.post('/directline/token', async (req, res) => {
