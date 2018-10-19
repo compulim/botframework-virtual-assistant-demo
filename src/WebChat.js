@@ -6,6 +6,7 @@ import './WebChat.css';
 import adjustTemperature from './data/action/adjustTemperature';
 
 import {
+  createCognitiveServicesWebSpeechPonyfillFactory,
   createDirectLine,
   createStore,
   createStyleSet,
@@ -13,6 +14,7 @@ import {
 } from 'botframework-webchat';
 
 import { createProvider } from 'react-redux';
+import fetchBingSpeechToken from './fetchBingSpeechToken';
 
 const WebChatProvider = createProvider('webchat');
 
@@ -36,11 +38,15 @@ class WebChat extends Component {
       }
     };
 
+    const f = createCognitiveServicesWebSpeechPonyfillFactory({ fetchToken: fetchBingSpeechToken });
+
     this.state = {
       directLine: null,
       store: createStore(
         {},
         () => next => action => {
+          console.log(action.type);
+
           if (action.type === 'DIRECT_LINE/UPSERT_ACTIVITY') {
             // For demonstration purpose only: every time an activity come from DirectLineJS, we will change the driver side temperature to some random values
             this.props.adjustTemperature(~~(Math.random() * 10) + 65);
@@ -49,8 +55,21 @@ class WebChat extends Component {
           return next(action);
         }
       ),
-      styleSet
+      styleSet,
+      webSpeechPonyfillFactory: function () {
+        console.log('creating ponyfill factory');
+        console.log(arguments);
+
+        const result = f.apply(null, arguments);
+
+        console.log(result);
+
+        return result;
+      }
+      // webSpeechPonyfillFactory: createCognitiveServicesWebSpeechPonyfillFactory({ fetchToken: this.fetchBingSpeechToken })
     };
+
+    console.log(this.state);
   }
 
   async componentDidMount() {
@@ -66,7 +85,7 @@ class WebChat extends Component {
 
   render() {
     const {
-      state: { directLine, store, styleSet }
+      state: { directLine, store, styleSet, webSpeechPonyfillFactory }
     } = this;
 
     return (
@@ -78,6 +97,7 @@ class WebChat extends Component {
                 directLine={ directLine }
                 storeKey="webchat"
                 styleSet={ styleSet }
+                webSpeechPonyfillFactory={ webSpeechPonyfillFactory }
               />
             </WebChatProvider>
         }
