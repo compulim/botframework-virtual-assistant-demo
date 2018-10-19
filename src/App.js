@@ -10,7 +10,10 @@ export default class extends Component {
   constructor(props) {
     super(props);
 
+    const searchParams = new URLSearchParams(window.location.search);
+
     this.state = {
+      locale: searchParams.get('locale') || window.navigator.language,
       store: createStore()
     };
   }
@@ -21,7 +24,7 @@ export default class extends Component {
     return (
       <Provider store={ store }>
         <div className="app">
-          <WebChat />
+          <WebChat locale={ this.state.locale } />
           <RightPane />
         </div>
       </Provider>

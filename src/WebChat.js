@@ -85,6 +85,7 @@ class WebChat extends Component {
 
   render() {
     const {
+      props: { locale },
       state: { directLine, store, styleSet, webSpeechPonyfillFactory }
     } = this;
 
@@ -95,6 +96,7 @@ class WebChat extends Component {
             <WebChatProvider store={ store }>
               <ReactWebChat
                 directLine={ directLine }
+                locale={ locale }
                 storeKey="webchat"
                 styleSet={ styleSet }
                 webSpeechPonyfillFactory={ webSpeechPonyfillFactory }
