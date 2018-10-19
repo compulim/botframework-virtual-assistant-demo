@@ -1,0 +1,17 @@
+{
+  "name": "token-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "William Wong <compulim@hotmail.com> (http://compulim.info/)",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "node-fetch": "^2.2.0",
+    "restify": "^7.2.1"
+  }
+}

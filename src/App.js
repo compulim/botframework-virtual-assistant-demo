@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+
+import RightPane from './RightPane';
 import WebChat from './WebChat';
 
 class App extends Component {
@@ -7,6 +9,7 @@ class App extends Component {
     return (
       <div className="app">
         <WebChat />
+        <RightPane />
       </div>
     );
   }
