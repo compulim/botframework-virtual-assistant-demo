@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 
-import Artboard from './assets/ArtboardCropped.png';
+import Artboard from './assets/ArtboardElaineCropped.png';
 import './RightPane.css';
 
 export default connect(({ climateControl }) => ({
