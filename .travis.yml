@@ -10,7 +10,7 @@ node_js:
 
 install:
 - npm install
-- docker build -t webchat.azurecr.io/darren-token-server token-server
+- docker build -t $ACR_NAME.azurecr.io/$DOCKER_IMAGE_NAME token-server
 
 before_script:
 - npm run build
