@@ -3,12 +3,12 @@
   margin: 20px 20px 20px 0;
 }
 
-.right-pane > .backdrop {
+.right-pane > .box {
   height: 100%;
   position: relative;
 }
 
-.right-pane > .backdrop > .translucent {
+.right-pane > .box > .translucent {
   background-color: rgba(255, 255, 255, .4);
   backdrop-filter: blur(8px);
   height: 100%;
@@ -18,7 +18,25 @@
   width: 100%;
 }
 
-.right-pane > .backdrop > .placeholder {
+.right-pane > .box > .placeholder {
   height: 100%;
   position: relative;
+}
+
+.right-pane > .box > .driver-side-temperature {
+  font-size: 40px;
+  left: 67%;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  width: 24%;
+}
+
+.right-pane > .box > .outside-temperature {
+  font-size: 40px;
+  left: 8%;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  width: 22%;
 }

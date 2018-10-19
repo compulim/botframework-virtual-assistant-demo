@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import './WebChat.css';
+
+import adjustTemperature from './data/action/adjustTemperature';
 
 import {
   createDirectLine,
@@ -13,7 +16,7 @@ import { createProvider } from 'react-redux';
 
 const WebChatProvider = createProvider('webchat');
 
-class App extends Component {
+class WebChat extends Component {
   constructor(props) {
     super(props);
 
@@ -35,13 +38,23 @@ class App extends Component {
 
     this.state = {
       directLine: null,
-      store: createStore(),
+      store: createStore(
+        {},
+        () => next => action => {
+          if (action.type === 'DIRECT_LINE/UPSERT_ACTIVITY') {
+            // For demonstration purpose only: every time an activity come from DirectLineJS, we will change the driver side temperature to some random values
+            this.props.adjustTemperature(~~(Math.random() * 10) + 65);
+          }
+
+          return next(action);
+        }
+      ),
       styleSet
     };
   }
 
   async componentDidMount() {
-    const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
+    const res = await fetch('https://hawo-webchat-virtual-assistant-demo.azurewebsites.net/directline/token', { method: 'POST' });
     const { token } = await res.json();
 
     this.setState(() => ({
@@ -73,4 +86,9 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(
+  () => ({}),
+  {
+    adjustTemperature
+  }
+)(WebChat)

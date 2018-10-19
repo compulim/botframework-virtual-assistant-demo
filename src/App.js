@@ -1,18 +1,30 @@
+import { Provider } from 'react-redux';
 import React, { Component } from 'react';
 import './App.css';
 
+import createStore from './data/createStore';
 import RightPane from './RightPane';
 import WebChat from './WebChat';
 
-class App extends Component {
+export default class extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      store: createStore()
+    };
+  }
+
   render() {
+    const { state: { store } } = this;
+
     return (
-      <div className="app">
-        <WebChat />
-        <RightPane />
-      </div>
+      <Provider store={ store }>
+        <div className="app">
+          <WebChat />
+          <RightPane />
+        </div>
+      </Provider>
     );
   }
 }
-
-export default App;
