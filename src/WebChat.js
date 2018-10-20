@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './WebChat.css';
+import adaptiveCardHostConfig from './AdaptiveCardHostConfig';
 
 import adjustTemperature from './data/action/adjustTemperature';
 
@@ -80,6 +81,7 @@ class WebChat extends Component {
           !!directLine &&
             <WebChatProvider store={ store }>
               <ReactWebChat
+                adaptiveCardHostConfig={ adaptiveCardHostConfig }
                 directLine={ directLine }
                 locale={ locale }
                 storeKey="webchat"
