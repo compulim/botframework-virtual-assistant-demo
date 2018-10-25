@@ -1,10 +1,10 @@
 import { SET_DESTINATION } from '../action/setDestination';
 
 const DEFAULT_STATE = {
-  // estimatedTimeOfArrival: null,
-  // fullAddress: null
-  estimatedTimeOfArrival: new Date(2018, 9, 25, 12, 15),
-  fullAddress: 'Hong Kong International Airport'
+  estimatedTimeOfArrival: null,
+  fullAddress: null
+  // estimatedTimeOfArrival: new Date(2018, 9, 25, 12, 15),
+  // fullAddress: 'Hong Kong International Airport'
 };
 
 export default function (state = DEFAULT_STATE, { payload, type }) {
