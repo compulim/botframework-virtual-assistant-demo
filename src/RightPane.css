@@ -40,3 +40,37 @@
   top: 10%;
   width: 22%;
 }
+
+.right-pane > .box > .real-time-clock {
+  color: #00AEEF;
+  font-size: 4vh;
+  font-weight: 100;
+  left: 10%;
+  line-height: 4.5vh;
+  position: absolute;
+  text-align: center;
+  top: 59%;
+  width: 80%;
+}
+
+.right-pane > .box > .destination-eta {
+  color: #1B3952;
+  font-size: 2vh;
+  font-weight: 600;
+  left: 10%;
+  position: absolute;
+  text-align: center;
+  top: 65%;
+  width: 80%;
+}
+
+.right-pane > .box > .destination-full-address {
+  color: #1B3952;
+  font-size: 1.8vh;
+  line-height: 100%;
+  left: 10%;
+  position: absolute;
+  text-align: center;
+  top: 73%;
+  width: 80%;
+}

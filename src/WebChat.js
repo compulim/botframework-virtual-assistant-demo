@@ -5,6 +5,7 @@ import './WebChat.css';
 import adaptiveCardHostConfig from './AdaptiveCardHostConfig';
 
 import adjustTemperature from './data/action/adjustTemperature';
+import setDestination from './data/action/setDestination';
 
 import {
   createCognitiveServicesWebSpeechPonyfillFactory,
@@ -45,6 +46,22 @@ class WebChat extends Component {
         {},
         () => next => action => {
           if (action.type === 'DIRECT_LINE/UPSERT_ACTIVITY') {
+            const { activity } = action.payload;
+
+            if (
+              activity.type === 'event'
+              && activity.name === 'ActiveRoute.Directions'
+            ) {
+              try {
+                this.props.setDestination({
+                  estimatedTimeOfArrival: new Date(Date.now() + 15 * 60000),
+                  fullAddress: activity.value.Destination.address.formattedAddress
+                });
+              } catch (err) {
+                console.error(err);
+              }
+            }
+
             // For demonstration purpose only: every time an activity come from DirectLineJS, we will change the driver side temperature to some random values
             this.props.adjustTemperature(~~(Math.random() * 10) + 65);
           }
