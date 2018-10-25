@@ -116,6 +116,7 @@ class WebChat extends Component {
 export default connect(
   () => ({}),
   {
-    adjustTemperature
+    adjustTemperature,
+    setDestination
   }
 )(WebChat)
