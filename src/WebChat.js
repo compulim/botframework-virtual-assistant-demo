@@ -62,8 +62,15 @@ class WebChat extends Component {
               }
             }
 
+            if (
+              activity.type === 'event'
+              && activity.name === 'ChangeTemperature'
+            ) {
+              this.props.adjustTemperature(activity.value);
+            }
+
             // For demonstration purpose only: every time an activity come from DirectLineJS, we will change the driver side temperature to some random values
-            this.props.adjustTemperature(~~(Math.random() * 10) + 65);
+            // this.props.adjustTemperature(~~(Math.random() * 10) + 65);
           }
 
           return next(action);
