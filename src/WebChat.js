@@ -8,7 +8,7 @@ import adjustTemperature from './data/action/adjustTemperature';
 import setDestination from './data/action/setDestination';
 
 import {
-  createCognitiveServicesWebSpeechPonyfillFactory,
+  createBrowserWebSpeechPonyfillFactory,
   createDirectLine,
   createStore,
   createStyleSet,
@@ -77,7 +77,7 @@ class WebChat extends Component {
         }
       ),
       styleSet,
-      webSpeechPonyfillFactory: createCognitiveServicesWebSpeechPonyfillFactory({ fetchToken: fetchBingSpeechToken })
+      webSpeechPonyfillFactory: createBrowserWebSpeechPonyfillFactory()
     };
   }
 
