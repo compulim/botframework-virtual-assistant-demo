@@ -8,7 +8,7 @@ import adjustTemperature from './data/action/adjustTemperature';
 import setDestination from './data/action/setDestination';
 
 import {
-  createCognitiveServicesWebSpeechPonyfillFactory,
+  createBrowserWebSpeechPonyfillFactory,
   createDirectLine,
   createStore,
   createStyleSet,
@@ -62,15 +62,22 @@ class WebChat extends Component {
               }
             }
 
+            if (
+              activity.type === 'event'
+              && activity.name === 'ChangeTemperature'
+            ) {
+              this.props.adjustTemperature(activity.value);
+            }
+
             // For demonstration purpose only: every time an activity come from DirectLineJS, we will change the driver side temperature to some random values
-            this.props.adjustTemperature(~~(Math.random() * 10) + 65);
+            // this.props.adjustTemperature(~~(Math.random() * 10) + 65);
           }
 
           return next(action);
         }
       ),
       styleSet,
-      webSpeechPonyfillFactory: createCognitiveServicesWebSpeechPonyfillFactory({ fetchToken: fetchBingSpeechToken })
+      webSpeechPonyfillFactory: createBrowserWebSpeechPonyfillFactory()
     };
   }
 
@@ -78,12 +85,22 @@ class WebChat extends Component {
     const res = await fetch('https://hawo-webchat-virtual-assistant-demo.azurewebsites.net/directline/token', { method: 'POST' });
     const { token, userID } = await res.json();
 
+    var directLine = createDirectLine({token});
+
     this.setState(() => ({
-      directLine: createDirectLine({
-        token,
-      }),
+      directLine: directLine,
       userID
     }));
+
+      directLine.postActivity({
+        from: { id: userID, name: "User", role: "user"},
+        name: 'startConversation',
+        type: 'event',
+        value: ''
+    })
+    .subscribe(function (id) {
+        console.log('trigger "startConversation" sent');
+    });
   }
 
   render() {
