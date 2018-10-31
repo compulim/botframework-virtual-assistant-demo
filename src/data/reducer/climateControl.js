@@ -3,9 +3,9 @@ import updateIn from 'simple-update-in';
 import { ADJUST_TEMPERATURE } from '../action/adjustTemperature';
 
 const DEFAULT_STATE = {
-  driverSideTemperature: 60,
-  outsideTemperature: 75,
-  passengerSideTemperature: 60
+  driverSideTemperature: 22,
+  outsideTemperature: 20,
+  passengerSideTemperature: 21
 }
 
 export default function (state = DEFAULT_STATE, { meta, payload, type }) {
