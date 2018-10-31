@@ -78,12 +78,22 @@ class WebChat extends Component {
     const res = await fetch('https://hawo-webchat-virtual-assistant-demo.azurewebsites.net/directline/token', { method: 'POST' });
     const { token, userID } = await res.json();
 
+    var directLine = createDirectLine({token});
+
     this.setState(() => ({
-      directLine: createDirectLine({
-        token,
-      }),
+      directLine: directLine,
       userID
     }));
+
+      directLine.postActivity({
+        from: { id: userID, name: "User", role: "user"},
+        name: 'startConversation',
+        type: 'event',
+        value: ''
+    })
+    .subscribe(function (id) {
+        console.log('trigger "startConversation" sent');
+    });
   }
 
   render() {
