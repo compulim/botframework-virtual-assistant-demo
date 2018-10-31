@@ -16,7 +16,6 @@ import {
 } from 'botframework-webchat';
 
 import { createProvider } from 'react-redux';
-import fetchBingSpeechToken from './fetchBingSpeechToken';
 
 const WebChatProvider = createProvider('webchat');
 
