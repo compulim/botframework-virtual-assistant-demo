@@ -6,6 +6,9 @@ import adaptiveCardHostConfig from './AdaptiveCardHostConfig';
 
 import adjustTemperature from './data/action/adjustTemperature';
 import setDestination from './data/action/setDestination';
+import playMusic from './data/action/playMusic';
+import tuneRadio from './data/action/tuneRadio';
+
 
 import {
   createBrowserWebSpeechPonyfillFactory,
@@ -66,6 +69,20 @@ class WebChat extends Component {
               && activity.name === 'ChangeTemperature'
             ) {
               this.props.adjustTemperature(activity.value);
+            }
+
+            if (
+              activity.type === 'event'
+              && activity.name === 'TuneRadio'
+            ) {
+              this.props.tuneRadio(activity.value);
+            }
+
+            if (
+              activity.type === 'event'
+              && activity.name === 'PlayMusic'
+            ) {
+              this.props.playMusic(activity.value);
             }
 
             // For demonstration purpose only: every time an activity come from DirectLineJS, we will change the driver side temperature to some random values
