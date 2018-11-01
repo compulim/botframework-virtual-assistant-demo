@@ -26,15 +26,15 @@ function pad(value, count = 2, padding = '0') {
 export default connect(({ climateControl, navigation, audioControl }) => ({
   driverSideTemperature: climateControl.driverSideTemperature,
   outsideTemperature: climateControl.outsideTemperature,
-  nowPlaying: audioControl.nowPlaying,
-  radioStation: audioControl.radioStation,
+  nowPlayingSong: audioControl.nowPlaying,
+  currentRadioStation: audioControl.radioStation,
   navigationEstimatedTimeOfArrival: navigation.estimatedTimeOfArrival,
   navigationFullAddress: navigation.fullAddress
 }))(({
   driverSideTemperature,
   outsideTemperature,
-  nowPlaying,
-  radioStation,
+  nowPlayingSong,
+  currentRadioStation,
   navigationEstimatedTimeOfArrival,
   navigationFullAddress
 }) => {
@@ -66,8 +66,8 @@ export default connect(({ climateControl, navigation, audioControl }) => ({
             </div>
         }
       </div>
-      <div className="now-playing">{ nowPlaying }</div>
-      <div className="radio-station">{ radioStation }</div>
+      <div className="now-playing">{ nowPlayingSong }</div>
+      <div className="radio-station">{ currentRadioStation }</div>
     </div>
   );
 })
