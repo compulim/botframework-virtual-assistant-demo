@@ -9,7 +9,6 @@ import setDestination from './data/action/setDestination';
 import playMusic from './data/action/playMusic';
 import tuneRadio from './data/action/tuneRadio';
 
-
 import {
   createBrowserWebSpeechPonyfillFactory,
   createDirectLine,
@@ -17,10 +16,6 @@ import {
   createStyleSet,
   default as ReactWebChat
 } from 'botframework-webchat';
-
-import { createProvider } from 'react-redux';
-
-const WebChatProvider = createProvider('webchat');
 
 class WebChat extends Component {
   constructor(props) {
@@ -129,17 +124,15 @@ class WebChat extends Component {
       <div className="web-chat">
         {
           !!directLine &&
-            <WebChatProvider store={ store }>
-              <ReactWebChat
-                adaptiveCardHostConfig={ adaptiveCardHostConfig }
-                directLine={ directLine }
-                locale={ locale }
-                storeKey="webchat"
-                styleSet={ styleSet }
-                userID={ userID }
-                webSpeechPonyfillFactory={ webSpeechPonyfillFactory }
-              />
-            </WebChatProvider>
+            <ReactWebChat
+              adaptiveCardHostConfig={ adaptiveCardHostConfig }
+              directLine={ directLine }
+              locale={ locale }
+              store={ store }
+              styleSet={ styleSet }
+              userID={ userID }
+              webSpeechPonyfillFactory={ webSpeechPonyfillFactory }
+            />
         }
       </div>
     );
