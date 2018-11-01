@@ -74,3 +74,23 @@
   top: 73%;
   width: 80%;
 }
+
+.right-pane > .box > .now-playing {
+  color: #1B3952;
+  font-size: 1.9vh;
+  line-height: 100%;
+  position: absolute;
+  text-align: center;
+  top: 83%;
+  width: 100%;
+}
+
+.right-pane > .box > .radio-station {
+  color: #1B3952;
+  font-size: 3.5vh;
+  line-height: 100%;
+  position: absolute;
+  text-align: center;
+  top: 85%;
+  width: 100%;
+}
