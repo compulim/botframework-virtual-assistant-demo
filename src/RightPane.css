@@ -81,8 +81,9 @@
   line-height: 100%;
   position: absolute;
   text-align: center;
-  top: 83%;
+  top: 83.5%;
   width: 100%;
+  text-transform: uppercase;
 }
 
 .right-pane > .box > .radio-station {
@@ -91,6 +92,6 @@
   line-height: 100%;
   position: absolute;
   text-align: center;
-  top: 85%;
+  top: 86%;
   width: 100%;
 }
