@@ -65,9 +65,9 @@ export default connect(({ climateControl, navigation, audioControl }) => ({
               { navigationFullAddress }
             </div>
         }
+        <div className="now-playing">{ nowPlayingSong }</div>
+        <div className="radio-station">{ currentRadioStation }</div>
       </div>
-      <div className="now-playing">{ nowPlayingSong }</div>
-      <div className="radio-station">{ currentRadioStation }</div>
     </div>
   );
 })
