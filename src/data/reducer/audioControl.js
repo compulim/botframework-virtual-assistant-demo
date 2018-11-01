@@ -13,12 +13,12 @@ export default function (state = DEFAULT_STATE, { meta, payload, type }) {
   switch (type) {
     case PLAY_MUSIC:
       state = updateIn(state, ['nowPlaying'], () => payload.targetSong);
-      state = updateIn(state, ['radioStation'], () => "");
+      state = updateIn(state, ['radioStation'], () => "Bluetooth");
       break;
 
       case TUNE_RADIO:
-      state = updateIn(state, ['nowPlaying'], () => state.nowPlaying );
-      state = updateIn(state, ['radioStation'], () => payload.targetRadioStation);
+      state = updateIn(state, ['nowPlaying'], () => "Thriller - Michael Jackson" );
+      state = updateIn(state, ['radioStation'], () => payload.targetStation);
       break;
 
     default: break;
