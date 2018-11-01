@@ -150,6 +150,8 @@ export default connect(
   () => ({}),
   {
     adjustTemperature,
-    setDestination
+    setDestination,
+    playMusic,
+    tuneRadio
   }
 )(WebChat)
