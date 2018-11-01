@@ -92,8 +92,18 @@ class WebChat extends Component {
     };
   }
 
+  getTokenURL(locale) {
+    switch ((locale || '').trim().toLowerCase()) {
+      case 'en-us':
+        return 'https://hawo-webchat-virtual-assistant-demo-en-us.azurewebsites.net/directline/token';
+
+      default:
+        return 'https://hawo-webchat-virtual-assistant-demo.azurewebsites.net/directline/token';
+    }
+  }
+
   async componentDidMount() {
-    const res = await fetch('https://hawo-webchat-virtual-assistant-demo.azurewebsites.net/directline/token', { method: 'POST' });
+    const res = await fetch(this.getTokenURL(this.props.locale), { method: 'POST' });
     const { token, userID } = await res.json();
 
     var directLine = createDirectLine({token});
