@@ -42,7 +42,7 @@ class WebChat extends Component {
       store: createStore(
         {},
         () => next => action => {
-          if (action.type === 'DIRECT_LINE/UPSERT_ACTIVITY') {
+          if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY') {
             const { activity } = action.payload;
 
             if (
