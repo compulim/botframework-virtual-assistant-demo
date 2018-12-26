@@ -115,7 +115,7 @@ class WebChat extends Component {
 
       directLine.postActivity({
         from: { id: userID, name: "User", role: "user"},
-        name   : 'conversationUpdate',
+        name   : 'startConversation',
         type   : 'event',
         locale : this.props.locale,
         value  : ''
