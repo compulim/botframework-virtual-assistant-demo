@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://compulim.github.io/botframework-virtual-assistant-demo",
   "dependencies": {
-    "botframework-webchat": "^4.1.0",
+    "botframework-webchat": "^4.2.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
