@@ -115,12 +115,13 @@ class WebChat extends Component {
 
       directLine.postActivity({
         from: { id: userID, name: "User", role: "user"},
-        name: 'startConversation',
-        type: 'event',
-        value: ''
+        name   : 'startConversation',
+        type   : 'event',
+        locale : this.props.locale,
+        value  : ''
     })
     .subscribe(function (id) {
-        console.log('trigger "startConversation" sent');
+        console.log('trigger "conversationUpdate" sent');
     });
   }
 
