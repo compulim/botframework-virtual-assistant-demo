@@ -113,16 +113,16 @@ class WebChat extends Component {
       userID
     }));
 
-    //   directLine.postActivity({
-    //     from: { id: userID, name: "User", role: "user"},
-    //     name   : 'startConversation',
-    //     type   : 'event',
-    //     locale : this.props.locale,
-    //     value  : ''
-    // })
-    // .subscribe(function (id) {
-    //     console.log('trigger "conversationUpdate" sent');
-    // });
+    directLine.postActivity({
+      from: { id: userID, name: "User", role: "user"},
+      name   : 'startConversation',
+      type   : 'event',
+      locale : this.props.locale,
+      value  : ''
+    })
+    .subscribe(function (id) {
+      console.log('trigger "conversationUpdate" sent');
+    });
   }
 
   render() {
